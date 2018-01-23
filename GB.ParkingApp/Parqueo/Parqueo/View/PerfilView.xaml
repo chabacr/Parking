@@ -1,0 +1,135 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Parqueo.View.PerfilView"
+             Title="Mi Perfil"
+             BackgroundColor="{StaticResource BackgroundColor}"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}">
+
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout
+                BindingContext="{Binding Perfil}"
+                Padding="10">
+                <Label
+                   Text="Foto:"
+                   VerticalOptions="Center">
+                </Label>
+
+                <Image
+                  HeightRequest="100"
+                  Source="{Binding ImageSource}"
+                  WidthRequest="100">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding ChangeImageCommand}"/>
+                    </Image.GestureRecognizers>
+                </Image>
+
+                <Label
+                    Text="Nombre:"
+                    VerticalOptions="Center">
+                </Label>
+                <Entry
+                   Placeholder="Nombre..."
+                   Text="{Binding Nombre, Mode=TwoWay}">
+                </Entry>
+
+                <Label
+                   Text="Apellidos:"
+                   VerticalOptions="Center">
+                </Label>
+                <Entry
+                  Placeholder="Apellidos..."
+                  Text="{Binding Apellidos, Mode=TwoWay}">
+                </Entry>
+
+                <Label
+                   Text="Teléfono:"
+                   VerticalOptions="Center">
+                </Label>
+                <Entry
+                   Keyboard="Telephone"
+                   Placeholder="Teléfono..."
+                   Text="{Binding Telefono, Mode=TwoWay}">
+                </Entry>
+
+                <ActivityIndicator
+                    IsRunning="{Binding IsRunning, Mode=TwoWay}"
+                    VerticalOptions="CenterAndExpand">
+                </ActivityIndicator>
+
+                <Button
+                    Command="{Binding SaveCommand}"
+                    BackgroundColor="Navy"
+                    BorderRadius="23"
+                    FontAttributes="Bold"
+                    HeightRequest="46"
+                    IsEnabled="{Binding IsEnabled, Mode=TwoWay}"
+                    Margin="50,0"
+                    Text="Actualizar"
+                    TextColor="White"
+                    VerticalOptions="EndAndExpand">
+                </Button>
+
+                <BoxView 
+                    HeightRequest="2"
+                    Color="{StaticResource AccentColor}">
+                </BoxView>
+
+                <Label 
+                    HorizontalOptions="CenterAndExpand"
+                    VerticalOptions="CenterAndExpand"
+                    FontAttributes="Bold"
+                    FontSize="Medium"                         
+                    Text="Cambio de Contraseña"/>
+
+                <Label
+                    Text="Contraseña:"
+                    VerticalOptions="Center">
+                </Label>
+                <Entry
+                  IsPassword="true"
+                  Placeholder="Contraseña"
+                  Text="{Binding OldPassword, Mode=TwoWay}">
+                </Entry>
+
+                <Label
+                    Text="Nueva contraseña:"
+                    VerticalOptions="Center">
+                </Label>
+                <Entry
+                   IsPassword="true"
+                   Placeholder="Nueva contraseña..."
+                   Text="{Binding NewPassword, Mode=TwoWay}">
+                </Entry>
+
+                <Label
+                   Text="Repita la contraseña:"
+                   VerticalOptions="Center">
+                </Label>
+                <Entry
+                   IsPassword="true"
+                   Placeholder="Repita la contraseña..."
+                   Text="{Binding Confirm, Mode=TwoWay}">
+                </Entry>
+
+                <ActivityIndicator
+                    IsRunning="{Binding IsRunningPassword, Mode=TwoWay}"
+                    VerticalOptions="CenterAndExpand">
+                </ActivityIndicator>
+                <Button
+                    Command="{Binding SaveCommandPassword}"
+                    BackgroundColor="Navy"
+                    BorderRadius="23"
+                    FontAttributes="Bold"
+                    HeightRequest="46"
+                    IsEnabled="{Binding IsEnabledPassword, Mode=TwoWay}"
+                    Margin="50,0"
+                    Text="Cambiar contraseña"
+                    TextColor="White"
+                    VerticalOptions="EndAndExpand">
+                </Button>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

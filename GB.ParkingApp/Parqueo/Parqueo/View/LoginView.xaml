@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                 x:Class="Parqueo.View.LoginView"
+                 Title="Login"
+             
+                 BackgroundColor="{StaticResource BackgroundColor}"
+                 BindingContext="{Binding Main, Source={StaticResource Locator}}">
+
+
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout 
+                BindingContext="{Binding Login}"
+                Padding="10"
+                Spacing="20">
+
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                    <Label
+                    Text="Parqueo"
+                    TextColor="#000000"
+                    FontSize="24"
+                    FontAttributes="Bold"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center">
+                    </Label>
+                </StackLayout>
+
+                <BoxView
+                HeightRequest="2"
+                Color="#000000">
+                </BoxView>
+
+                <Entry
+                Text="{Binding Email, Mode=TwoWay}"
+                Placeholder="Ingrese su email"
+                TextColor="#000000">
+                </Entry>
+
+                <Entry
+                Text="{Binding  Password, Mode=TwoWay}"
+                Placeholder="Ingrese su contraseña"
+                IsPassword="True"
+                TextColor="#000000">
+                </Entry>
+
+                <ActivityIndicator
+                    IsRunning="{Binding IsRunning, Mode=TwoWay}">
+                </ActivityIndicator>
+
+                <Button
+                Text="Ingresar"
+                Command="{Binding LoginCommand}"
+                IsEnabled="{Binding IsEnabled, Mode=TwoWay}"
+                TextColor="#000000"
+                HorizontalOptions="Center"
+                VerticalOptions="Center">
+                </Button>
+
+                <Button
+                Text="Registrarme"
+                Command="{Binding RegisterNewUserCommand}"
+                IsEnabled="{Binding IsEnabledRegister, Mode=TwoWay}"
+                TextColor="#000000"
+                HorizontalOptions="Center"
+                VerticalOptions="Center">
+                </Button>
+
+                <!--<StackLayout 
+                Orientation="Horizontal"
+                HorizontalOptions="Center">
+
+                    <Label 
+                    Text="Recuerdame"
+                    TextColor="#000000"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center">
+                    </Label>
+
+                    <Switch
+                    IsToggled="{Binding IsToggled, Mode=TwoWay}"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center">
+                    </Switch>
+                </StackLayout>
+
+                <Label 
+                    Text="¿Has olvidado tu contraseña?"
+                    TextColor="{StaticResource AccentColor}"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center">
+
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer
+                            Command="{Binding RecoverPasswordCommand}"/>
+                    </Label.GestureRecognizers>
+                </Label>-->
+
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+
+</ContentPage>

@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Parqueo.View.ReservaView"
+             Title="Mis Reservas"
+             BackgroundColor="{StaticResource BackgroundColor}"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}">
+
+    <ContentPage.Content>
+        <StackLayout 
+            BindingContext="{Binding Reservas}" 
+            Padding="5">
+
+            <ListView 
+                HasUnevenRows="true" 
+                IsRefreshing="{Binding IsRefreshing, Mode=TwoWay}"
+                ItemsSource="{Binding Reservas}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout>
+                                <Label
+                                    HorizontalOptions="CenterAndExpand"
+                                    FontSize="Large" 
+                                    Text="{Binding Zona.Parqueo.Descripcion, StringFormat='Parqueo {0}'}">
+                                </Label>
+                                <Label 
+                                    HorizontalOptions="CenterAndExpand"
+                                    FontSize="Medium"  
+                                    Text="{Binding Zona.NZona, StringFormat='Número de Zona {0}'}">
+                                </Label>
+                                <Label 
+                                    HorizontalOptions="CenterAndExpand"
+                                    FontSize="Medium"  
+                                    Text="{Binding Vehiculo.MarcaPlaca}">
+                                </Label>
+                                <Label 
+                                    HorizontalOptions="CenterAndExpand"
+                                    FontSize="Small"  
+                                    Text="{Binding FechaRegistroToString, StringFormat='Fecha Registro {0}'}">
+                                </Label>
+                                <Label 
+                                    HorizontalOptions="CenterAndExpand"
+                                    FontSize="Small"  
+                                    Text="{Binding FechaReservaToString, StringFormat='Fecha Reserva {0}'}">
+                                </Label>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

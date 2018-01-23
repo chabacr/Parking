@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Parqueo.View.AccionVehiculoView"
+             Title="Vehiculos"
+             BackgroundColor="{StaticResource BackgroundColor}"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout
+                BindingContext="{Binding AccionCarros}"
+                Padding="10">
+                <Label
+                   Text="Foto:"
+                   VerticalOptions="Center">
+                </Label>
+
+                <Image
+                  HeightRequest="100"
+                  Source="{Binding ImageSource}"
+                  WidthRequest="100">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding ChangeImageCommand}"/>
+                    </Image.GestureRecognizers>
+                </Image>
+
+                <Label
+                    Text="Marca:"
+                    VerticalOptions="Center">
+                </Label>
+                <Entry
+                   Placeholder="Marca..."
+                   Text="{Binding Marca, Mode=TwoWay}">
+                </Entry>
+
+                <Label
+                   Text="Modelo:"
+                   VerticalOptions="Center">
+                </Label>
+                <Entry
+                  Placeholder="Modelo..."
+                  Keyboard="Numeric"
+                  Text="{Binding Modelo, Mode=TwoWay}">
+                </Entry>
+
+                <Label
+                   Text="Placa:"
+                   VerticalOptions="Center">
+                </Label>
+                <Entry
+                   Placeholder="Placa..."
+                   Text="{Binding Placa, Mode=TwoWay}">
+                </Entry>
+
+                <Label
+                   Text="Color:"
+                   VerticalOptions="Center">
+                </Label>
+                <Entry
+                   Placeholder="Color..."
+                   Text="{Binding Color, Mode=TwoWay}">
+                </Entry>
+
+                <Picker 
+                Title="{Binding TitleSelect, Mode=TwoWay}"
+                IsEnabled="{Binding IsEnabledSelect , Mode=TwoWay}"
+                ItemsSource="{Binding TipoVehiculos}"
+                ItemDisplayBinding="{Binding Descripcion}"
+                SelectedItem="{Binding SelectTipoVehiculos, Mode=TwoWay}"/>
+                
+                <ActivityIndicator
+                    IsRunning="{Binding IsRunning, Mode=TwoWay}"
+                    VerticalOptions="CenterAndExpand">
+                </ActivityIndicator>
+
+                <Button
+                    Command="{Binding AccionCommand}"
+                    BackgroundColor="Navy"
+                    BorderRadius="23"
+                    FontAttributes="Bold"
+                    HeightRequest="46"
+                    IsEnabled="{Binding IsEnabled, Mode=TwoWay}"
+                    Margin="50,0"
+                    Text="{Binding btnTitle}"
+                    TextColor="White"
+                    VerticalOptions="EndAndExpand">
+                </Button>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

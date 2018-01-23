@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Parqueo.View.ParqueoView"
+             Title="Parqueo"
+             BackgroundColor="{StaticResource BackgroundColor}"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem 
+            Command="{Binding NewParkingCommand}"
+            Icon="ic_action_add_circle"/>
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout 
+                BindingContext="{Binding Parqueos}" 
+                Padding="5">
+
+                <ListView 
+                    HasUnevenRows="true" 
+                    IsPullToRefreshEnabled="true"
+                    IsRefreshing="{Binding IsRefreshing, Mode=TwoWay}"
+                    ItemsSource="{Binding Parqueos}"
+                    RefreshCommand="{Binding RefreshCommand}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <ViewCell.ContextActions>
+                                    <MenuItem 
+                                        Command="{Binding DetailCommand}" 
+                                        Text="Detalles">
+                                    </MenuItem>
+                                    <MenuItem 
+                                        Command="{Binding EditCommand}" 
+                                        Text="Editar">
+                                    </MenuItem>
+                                    <MenuItem 
+                                        Command="{Binding DeleteCommand}" 
+                                        IsDestructive="true"     
+                                        Text="Borrar">
+                                    </MenuItem>
+                                </ViewCell.ContextActions>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Label 
+                                    Grid.Column="0" 
+                                    HorizontalOptions="FillAndExpand" 
+                                    FontSize="Large" 
+                                    Text="{Binding Descripcion}" 
+                                    VerticalOptions="Center">
+                                    </Label>
+                                    <Image 
+                                    HorizontalOptions="End" 
+                                    Source="ic_chevron_right">
+                                        <Image.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding SelectParkingCommand}"/>
+                                        </Image.GestureRecognizers>
+                                    </Image>
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

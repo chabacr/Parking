@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Parqueo.View.ObservacionView"
+              Title="Observaciones"
+             BackgroundColor="{StaticResource BackgroundColor}"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem 
+            Command="{Binding NewObservationCommand}"
+            Icon="ic_action_add_circle"/>
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Content>
+        <StackLayout 
+            BindingContext="{Binding Observations}" 
+            Padding="5">
+
+            <ListView 
+                HasUnevenRows="true" 
+                IsPullToRefreshEnabled="true"
+                IsRefreshing="{Binding IsRefreshing, Mode=TwoWay}"
+                ItemsSource="{Binding Observations}"
+                RefreshCommand="{Binding RefreshCommand}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <ViewCell.ContextActions>
+                                <MenuItem 
+                                    Command="{Binding EditCommand}" 
+                                    Text="Editar">
+                                </MenuItem>
+                                <MenuItem 
+                                    Command="{Binding DeleteCommand}" 
+                                    IsDestructive="true"     
+                                    Text="Borrar">
+                                </MenuItem>
+                            </ViewCell.ContextActions>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label 
+                                    Grid.Column="0" 
+                                    HorizontalOptions="FillAndExpand" 
+                                    FontSize="Large" 
+                                    Text="{Binding Descripcion}" 
+                                    VerticalOptions="Center">
+                                </Label>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

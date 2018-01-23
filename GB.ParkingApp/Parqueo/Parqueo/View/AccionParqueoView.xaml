@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Parqueo.View.AccionParqueoView"
+             Title="Parqueo"
+             BackgroundColor="{StaticResource BackgroundColor}"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout
+                BindingContext="{Binding ActionParking}"
+                Padding="10">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Label
+                        Grid.Column="0" Grid.Row="0"
+                        Text="Descripción:"
+                        VerticalOptions="Center">
+                    </Label>
+
+                    <Entry
+                        Grid.Column="1" Grid.Row="0"
+                        Placeholder="Descripción..."
+                        Text="{Binding Descripcion, Mode=TwoWay}">
+                    </Entry>
+
+                    <Label
+                        Grid.Column="0" Grid.Row="1"
+                        Text="Dirección:"
+                        VerticalOptions="Center">
+                    </Label>
+                    <Entry
+                        Grid.Column="1" Grid.Row="1"
+                        Placeholder="Dirección..."
+                        Text="{Binding Direccion, Mode=TwoWay}">
+                    </Entry>
+
+                    <Label
+                        Grid.Column="0" Grid.Row="2"
+                        Text="Número de Zonas:"
+                        VerticalOptions="Center">
+                    </Label>
+                    <Entry
+                        Grid.Column="1" Grid.Row="2"
+                        Placeholder="Número de Zonas..."
+                        Keyboard="Numeric"
+                        Text="{Binding NumeroZonas, Mode=TwoWay}">
+                    </Entry>
+                </Grid>
+
+                <ActivityIndicator
+                    IsRunning="{Binding IsRunning, Mode=TwoWay}"
+                    VerticalOptions="CenterAndExpand">
+                </ActivityIndicator>
+                <Button
+                Command="{Binding ActionCommand}"
+                BackgroundColor="Navy"
+                BorderRadius="23"
+                FontAttributes="Bold"
+                HeightRequest="46"
+                IsEnabled="{Binding IsEnabled, Mode=TwoWay}"
+                Margin="50,0"
+                Text="{Binding TitleBtn}"
+                TextColor="White"
+                VerticalOptions="EndAndExpand">
+                </Button>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

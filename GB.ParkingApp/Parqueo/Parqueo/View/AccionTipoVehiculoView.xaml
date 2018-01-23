@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Parqueo.View.AccionTipoVehiculoView"
+             BackgroundColor="{StaticResource BackgroundColor}"
+             BindingContext="{Binding Main, Source= {StaticResource Locator}}"
+             Title="Tipos de Vehiculos">
+    
+    <ContentPage.Content>
+        <StackLayout
+            BindingContext="{Binding AccionTipoVehiculo}"
+            Padding="10">
+            <Label
+                Text="Marca:">
+            </Label>
+            <Entry
+                Text="{Binding Descripcion, Mode=TwoWay}"
+                Placeholder="Digite la descripción...">
+            </Entry>
+            <ActivityIndicator
+                IsRunning="{Binding IsRunning, Mode=TwoWay}"
+                VerticalOptions="CenterAndExpand">
+            </ActivityIndicator>
+            <Button
+                Command="{Binding ActionCommand}"
+                BackgroundColor="Navy"
+                BorderRadius="23"
+                FontAttributes="Bold"
+                HeightRequest="46"
+                IsEnabled="{Binding IsEnabled, Mode=TwoWay}"
+                Margin="50,0"
+                Text="{Binding TitleBtn}"
+                TextColor="White"
+                VerticalOptions="EndAndExpand">
+            </Button>
+        </StackLayout>
+    </ContentPage.Content>
+    
+</ContentPage>

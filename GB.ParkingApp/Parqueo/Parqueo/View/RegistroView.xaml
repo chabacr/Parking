@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Parqueo.View.RegistroView"
+             BackgroundColor="{StaticResource BackgroundColor}"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}"
+             Title="Registrarme">
+
+
+    <ContentPage.Content>
+        <ScrollView
+            BindingContext="{Binding NewRegister}">
+            <StackLayout
+                Padding="10">
+                
+                    <Label
+                        Text="Nombre:"
+                        VerticalOptions="Center">
+                    </Label>
+                    <Entry
+                        Placeholder="Digite su nombre..."
+                        Text="{Binding Nombre, Mode=TwoWay}">
+                    </Entry>
+
+                    <Label
+                        Text="Apellidos:"
+                        VerticalOptions="Center">
+                    </Label>
+                    <Entry
+                        Placeholder="Digite sus apellidos..."
+                        Text="{Binding Apellidos, Mode=TwoWay}">
+                    </Entry>
+
+                    <Label
+                        Text="Email:"
+                        VerticalOptions="Center">
+                    </Label>
+                    <Entry
+                        Keyboard="Email"
+                        Placeholder="Digite su email..."
+                        Text="{Binding Correo, Mode=TwoWay}">
+                    </Entry>
+
+                    <Label
+                        Text="Teléfono:"
+                        VerticalOptions="Center">
+                    </Label>
+                    <Entry
+                        Keyboard="Telephone"
+                        Placeholder="Digite su teléfono..."
+                        Text="{Binding Telefono, Mode=TwoWay}">
+                    </Entry>
+
+                    <Label
+                        Text="Contraseña:"
+                        VerticalOptions="Center">
+                    </Label>
+                    <Entry
+                        IsPassword="true"
+                        Placeholder="Digite su contraseña..."
+                        Text="{Binding Password, Mode=TwoWay}">
+                    </Entry>
+
+                    <Label
+                        Text="Confirmar contraseña:"
+                        VerticalOptions="Center">
+                    </Label>
+                    <Entry
+                        IsPassword="true"
+                        Placeholder="Repita la contraseña..."
+                        Text="{Binding Confirm, Mode=TwoWay}">
+                    </Entry>
+
+                    <Image
+                        HeightRequest="200"
+                        Source="{Binding ImageSource}"
+                        WidthRequest="200">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding ChangeImageCommand}"/>
+                        </Image.GestureRecognizers>
+                    </Image>
+
+                    <Label
+                       FontSize="Small"
+                       HorizontalOptions="Center"
+                       Text="Toca la imagen para cambiarla.">
+                    </Label>
+
+                <ActivityIndicator
+                    IsRunning="{Binding IsRunning, Mode=TwoWay}"
+                    VerticalOptions="CenterAndExpand">
+                </ActivityIndicator>
+                <Button
+                    Command="{Binding SaveCommand}"
+                    BackgroundColor="Navy"
+                    BorderRadius="23"
+                    FontAttributes="Bold"
+                    HeightRequest="46"
+                    IsEnabled="{Binding IsEnabled, Mode=TwoWay}"
+                    Margin="50,0"
+                    Text="Registrar"
+                    TextColor="White"
+                    VerticalOptions="EndAndExpand">
+                </Button>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
+
+
+        
+
+       

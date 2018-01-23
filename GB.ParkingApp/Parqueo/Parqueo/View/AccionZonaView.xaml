@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Parqueo.View.AccionZonaView"
+             BackgroundColor="{StaticResource BackgroundColor}"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}"
+             Title="{Binding Parking.Descripcion}">
+    <ContentPage.Content>
+        <StackLayout
+            BindingContext="{Binding ActionZona}"
+            Padding="10">
+            <Label
+                Text="Número de zona:">
+            </Label>
+            <Entry
+                Keyboard="Numeric"
+                Text="{Binding NZona, Mode=TwoWay}"
+                Placeholder="Digite el Número de zona...">
+            </Entry>
+            
+            <Picker 
+                Title="Seleccione" 
+                ItemsSource="{Binding Estados}"
+                ItemDisplayBinding="{Binding Nombre}"
+                SelectedItem="{Binding SelectEstado, Mode=TwoWay}"/>
+            
+            <ActivityIndicator
+                IsRunning="{Binding IsRunning, Mode=TwoWay}"
+                VerticalOptions="CenterAndExpand">
+            </ActivityIndicator>
+            <Button
+                Command="{Binding ActionCommand}"
+                BackgroundColor="Navy"
+                BorderRadius="23"
+                FontAttributes="Bold"
+                HeightRequest="46"
+                IsEnabled="{Binding IsEnabled, Mode=TwoWay}"
+                Margin="50,0"
+                Text="{Binding TitleBtn}"
+                TextColor="White"
+                VerticalOptions="EndAndExpand">
+            </Button>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

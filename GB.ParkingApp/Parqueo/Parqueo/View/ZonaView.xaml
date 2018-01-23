@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Parqueo.View.ZonaView"
+             BackgroundColor="{StaticResource BackgroundColor}"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}"
+             Title="{Binding Parking.Descripcion}">
+    
+    <ContentPage.ToolbarItems>
+        <ToolbarItem
+            Command="{Binding NewZonaCommand}"
+            Icon="ic_action_add_circle"/>
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Content>
+        <StackLayout
+            Padding="5"
+            BindingContext="{Binding Zonas}">
+            <ListView
+                HasUnevenRows="True"
+                IsRefreshing="{Binding isRefreshing, Mode=TwoWay}"
+                ItemsSource="{Binding Zonas}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            
+                            <ViewCell.ContextActions>
+                                <MenuItem 
+                                    Command="{Binding EditCommand}" 
+                                    Text="Editar">
+                                </MenuItem>
+                                <MenuItem 
+                                    Command="{Binding DeleteCommand}" 
+                                    IsDestructive="true"     
+                                    Text="Borrar">
+                                </MenuItem>
+                            </ViewCell.ContextActions>
+                            <StackLayout>
+                                <Label
+                                    HorizontalOptions="CenterAndExpand"
+                                    FontSize="Large" 
+                                    Text="{Binding NZona, StringFormat='Número de Zona: {0}'}">
+                                </Label>
+                                <Label 
+                                    HorizontalOptions="CenterAndExpand"
+                                    FontSize="Medium"  
+                                    Text="{Binding Condicion, StringFormat='Estado: {0}'}">
+                                </Label>
+                            </StackLayout>
+                        </ViewCell>                        
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            
+        </StackLayout>
+    </ContentPage.Content>
+    
+</ContentPage>
